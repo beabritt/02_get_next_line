@@ -6,7 +6,7 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:44:23 by becamino          #+#    #+#             */
-/*   Updated: 2023/05/19 14:19:42 by becamino         ###   ########.fr       */
+/*   Updated: 2023/05/19 19:09:40 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*get_next_line(int fd)
 	
 	num = read(fd, stash, BUFFER_SIZE);
 	
-	line = ft_cut(stash, line, BUFFER_SIZE);
+	line = ft_cut(stash, BUFFER_SIZE);
 	printf("%s",line);
 	
 
