@@ -6,13 +6,13 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:44:23 by becamino          #+#    #+#             */
-/*   Updated: 2023/05/19 19:09:40 by becamino         ###   ########.fr       */
+/*   Updated: 2023/05/22 18:26:16 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE	5
+# define BUFFER_SIZE 6
 
 char	*get_next_line(int fd)
 {
@@ -23,10 +23,12 @@ char	*get_next_line(int fd)
 	num = read(fd, stash, BUFFER_SIZE);
 	
 	line = ft_cut(stash, BUFFER_SIZE);
-	printf("%s",line);
+	printf("\n %s",line);
+	printf("\n %s", stash);
 	
 
 	
 	return(line);
 }
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 18:31:12 by becamino          #+#    #+#             */
-/*   Updated: 2023/05/17 17:15:47 by becamino         ###   ########.fr       */
+/*   Updated: 2023/05/22 16:11:32 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 int main(void)
 {
     int fd;
-
+    char    *line;
     fd = open("hola.txt", O_RDONLY);
     if (!fd)
         return (0);
-    get_next_line(fd);
+    line = get_next_line(fd);
+    free(line);
     close(fd);
     return (0);
 }

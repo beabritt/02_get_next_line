@@ -6,6 +6,7 @@
 
 #include <fcntl.h>
 
+
 char	*ft_cut(char *stash, int b_size)
 {
 	char	*line;
@@ -19,21 +20,27 @@ char	*ft_cut(char *stash, int b_size)
 			i++;
 	}		
 	line[i] = stash[i];
-	printf("%d \n", i);
+	stash = ft_save(stash, b_size, i);
+	printf("\n %d", i);
 	
 	return(line);
 }
 
-
-int	main(void)
+char	*ft_save(char *stash, int b_size, int i)
 {
-	static char	stash[] = "hola \n adios";
-	char		*line;
-	int			b_size;
-
-	b_size = 8;
-	line = ft_cut(stash, b_size);
-	printf("%s", line);
-	free(line);
-	return(0);
+	int	diff;
+	int	x;
+	
+	b_size = b_size - 1;
+	diff = b_size - i;
+	
+	x = 0;
+	while (diff > 0)
+	{
+		stash[x] = stash[b_size];
+		diff--;
+		x++;
+		b_size--;
+	}
+	return(stash);
 }
