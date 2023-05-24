@@ -6,7 +6,7 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:48:57 by becamino          #+#    #+#             */
-/*   Updated: 2023/05/22 18:21:42 by becamino         ###   ########.fr       */
+/*   Updated: 2023/05/24 17:06:12 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@
 #include<stdlib.h>
 
 char	*get_next_line(int fd);
-char	*ft_cut(char *stash, int b_size);
-char	*ft_save(char *stash, int b_size, int i);
+char	*ft_cut(char *stash, int b_size, char *saved);
+char	*ft_save(char *stash, int b_size, int i, char *temp);
+int 	ft_strlen(char *line);

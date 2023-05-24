@@ -6,18 +6,18 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:46:19 by becamino          #+#    #+#             */
-/*   Updated: 2023/05/22 18:51:50 by becamino         ###   ########.fr       */
+/*   Updated: 2023/05/24 18:48:39 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 
-char	*ft_cut(char *stash, int b_size)
+char	*ft_cut(char *stash, int b_size, char *saved)
 {
-	char	*line;
-	char	*saved;
-	int		i;
+	char		*line;
+	static char	*temp;
+	int			i;
 
 	i = 0;
 	line = malloc(b_size);
@@ -27,16 +27,16 @@ char	*ft_cut(char *stash, int b_size)
 			i++;
 	}		
 	line[i] = stash[i];
-	saved = ft_save(stash, b_size, i);
-	printf("\n %d", i);
-	printf("\n %s", saved);
+	saved = ft_save(stash, b_size, i, temp);
+	free(temp);
+	//printf("\n %d", i);
+	//printf("\n %s", saved);
 	
 	return(line);
 }
 
-char	*ft_save(char *stash, int b_size, int i)
+char	*ft_save(char *stash, int b_size, int i, char *temp)
 {
-	static char	*temp;
 	int	diff;
 	int	x;
 	
@@ -53,4 +53,16 @@ char	*ft_save(char *stash, int b_size, int i)
 		b_size--;
 	}
 	return(temp);
+}
+
+int	ft_strlen(char *line)
+{
+	int	cont;
+
+	cont = 0;
+	while(line[cont] != '\0')
+	{
+		cont++;
+	}
+	return(cont);
 }
