@@ -14,13 +14,22 @@
 
 int main(void)
 {
-    int fd;
+    int 	fd;
+	int		x;
     char    *line;
+
+	x = 0;
     fd = open("hola.txt", O_RDONLY);
     if (!fd)
         return (0);
-    line = get_next_line(fd);
-    free(line);
+	while (x <= 3)
+	{
+   		line = get_next_line(fd);
+		printf("%s \n", line);
+		free(line);
+		x++;
+	}
+
     close(fd);
     return (0);
 }

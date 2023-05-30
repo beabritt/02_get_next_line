@@ -16,16 +16,17 @@
 
 char	*get_next_line(int fd)
 {
-	static char	stash[BUFFER_SIZE];
+	static char	*stash;
 	char		*line;
 	int			x;
 	
-	x = 1;
-	while (x > 0)
-	{
-		x = read(fd, stash, BUFFER_SIZE);
-		line = ft_cut(stash, BUFFER_SIZE);
-	}
+	x = 0;
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+
+	x = read(fd, stash, BUFFER_SIZE);
+	line = ft_cut(stash, BUFFER_SIZE);
+
 	if (x <= 0)
 		return (NULL);
 
@@ -34,8 +35,8 @@ char	*get_next_line(int fd)
 	printf("\n %s", stash);
 	
 
-	
-	return(line);
+	return(line);	
+
 }
 
 #endif

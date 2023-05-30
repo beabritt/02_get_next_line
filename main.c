@@ -16,6 +16,7 @@ int main(void)
 {
     int fd;
     char    *line;
+    
     fd = open("hola.txt", O_RDONLY);
     if (!fd)
         return (0);
