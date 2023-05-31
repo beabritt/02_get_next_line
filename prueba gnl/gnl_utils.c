@@ -1,38 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   gnl_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:46:19 by becamino          #+#    #+#             */
-/*   Updated: 2023/05/22 18:51:50 by becamino         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:55:33 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "gnl.h"
 
 
-char	*ft_cut(char *stash, int b_size)
-{
-	char	*line;
-	char	*saved;
-	int		i;
 
-	i = 0;
-	line = malloc(b_size);
-	while(i < b_size - 1 && stash[i] != 10)
-	{
-			line[i] = stash[i];
-			i++;
-	}		
-	line[i] = stash[i];
-	saved = ft_save(stash, b_size, i);
-	printf("\n %d", i);
-	printf("\n %s", saved);
-	
-	return(line);
-}
 
 char	*ft_save(char *stash, int b_size, int i)
 {
@@ -53,4 +34,50 @@ char	*ft_save(char *stash, int b_size, int i)
 		b_size--;
 	}
 	return(temp);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
+
+int	*ft_strchr_gnl(const char *s, int c)
+{
+	const int	slen = ft_strlen(s);
+	int			x;
+
+	x = 0;
+	while (x <= slen && (x >= 0 && x <= 255))
+	{
+		if (s[x] == (char)c)
+			return (1);
+		else
+			x++;
+	}
+	return (0);
+}
+
+char	*ft_strjoin_gnl(char const *s1, char const *s2)
+{
+	size_t	x;
+	size_t	slen2;
+	size_t	slen1;
+	void	*s3;
+
+	slen1 = ft_strlen(s1);
+	slen2 = ft_strlen(s2);
+	x = slen1 + slen2 + 1;
+	s3 = malloc(x);
+	if (!s3)
+		return (0);
+	ft_strlcpy (s3, s1, slen1 + 1);
+	ft_strlcpy (&s3[slen1], s2, slen2 + 1);
+	return (s3);
 }
