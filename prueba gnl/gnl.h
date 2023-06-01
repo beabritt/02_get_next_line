@@ -6,7 +6,7 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:48:57 by becamino          #+#    #+#             */
-/*   Updated: 2023/06/01 16:02:30 by becamino         ###   ########.fr       */
+/*   Updated: 2023/06/01 18:49:15 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 char	*get_next_line(int fd);
 char	*ft_read(int fd, char *stash);
 
-char	*ft_cut(char *stash, char *line);
+char	*ft_cut(char *stash);
 char	*ft_save(char *stash, int b_size, int i);
 
 void	ft_strlcpy_gnl(char *dst, const char *src, size_t dstsize);

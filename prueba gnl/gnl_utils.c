@@ -6,35 +6,11 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:46:19 by becamino          #+#    #+#             */
-/*   Updated: 2023/06/01 16:17:04 by becamino         ###   ########.fr       */
+/*   Updated: 2023/06/01 18:56:05 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gnl.h"
-
-
-
-
-char	*ft_save(char *stash, int b_size, int i)
-{
-	static char	*temp;
-	int	diff;
-	int	x;
-	
-	b_size = b_size - 1;
-	diff = b_size - i;
-	
-	x = 0;
-	temp = malloc(diff);
-	while (diff > 0)
-	{
-		temp[x] = stash[b_size];
-		diff--;
-		x++;
-		b_size--;
-	}
-	return(temp);
-}
 
 void	ft_strlcpy_gnl(char *dst, const char *src, size_t dstsize)
 {

@@ -6,7 +6,7 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 18:31:12 by becamino          #+#    #+#             */
-/*   Updated: 2023/06/01 15:57:56 by becamino         ###   ########.fr       */
+/*   Updated: 2023/06/01 18:57:19 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int main(void)
     fd = open("hola.txt", O_RDONLY);
     if (!fd)
         return (0);
-	while (x <= 1)
+	while (x < 1)
 	{
    		line = get_next_line(fd);
-		printf("%s \n", line);
+		printf("%d \n", x);
 		free(line);
 		x++;
 	}

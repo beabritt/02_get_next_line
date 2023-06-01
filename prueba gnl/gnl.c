@@ -6,7 +6,7 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:44:23 by becamino          #+#    #+#             */
-/*   Updated: 2023/06/01 16:19:19 by becamino         ###   ########.fr       */
+/*   Updated: 2023/06/01 19:02:14 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,34 @@
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 6
 
-char	*ft_cut(char *stash, char *line)
+char	*ft_cut(char *stash)
 {
 	int		i;
 	int		j;
 	int		len;
+	char	*res;
 	
 	i = 0;
 	j = 0;
 	len = ft_strlen(stash);
-	printf("%s\n", "hola");
-	while(stash[i] != 10)
+	res = malloc(sizeof(char)* len);
+	while(stash[i] != '\n')
 	{
-			line[i] = stash[i];
-			i++;
-	}		
-	line[i] = stash[i];
+		res[i] = stash[i];
+		i++;
+	}
+	res[i] = stash[i];
 	i++;
-	line[i] = '\0';
+	res[i] = '\0';
+	printf("%s\n", res);
 	while (i < len - 1)
 	{
 		stash[j] = stash[i];
 		i++;
 		j++;
 	}
-	
-	printf("\n %s", line);
-	
-	return(line);
+	printf("%s", stash);
+	return(res);
 }
 
 char	*ft_read(int fd, char *stash)
@@ -66,10 +66,11 @@ char	*ft_read(int fd, char *stash)
 		}
 		else
 			stash = ft_strjoin_gnl(stash, readd);
-		y = ft_strchr_gnl(stash, 10);
+			y = ft_strchr_gnl(stash, 10);
+			//printf("%d\n", y);
 		if (y == 1)
 		{
-			line = ft_cut(stash, line);
+			line = ft_cut(stash);
 			return(line);
 		}
 	}
