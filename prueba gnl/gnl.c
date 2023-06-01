@@ -6,13 +6,32 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:44:23 by becamino          #+#    #+#             */
-/*   Updated: 2023/06/01 19:02:14 by becamino         ###   ########.fr       */
+/*   Updated: 2023/06/01 19:28:25 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gnl.h"
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 6
+
+char	*ft_save(char *stash, int len, int i)
+{
+	char	*aux2;
+	size_t	x;
+	
+	x = 0;
+	aux2 = malloc(sizeof(char)*len);
+	if (!aux2)
+		return(NULL);
+	while (i < len)
+	{
+		aux2[x] = stash[i];
+		x++;
+		i++;
+	}
+	free(stash);
+	return (aux2);
+}
 
 char	*ft_cut(char *stash)
 {
@@ -25,6 +44,8 @@ char	*ft_cut(char *stash)
 	j = 0;
 	len = ft_strlen(stash);
 	res = malloc(sizeof(char)* len);
+	if (!res)
+		return (NULL);
 	while(stash[i] != '\n')
 	{
 		res[i] = stash[i];
@@ -34,13 +55,8 @@ char	*ft_cut(char *stash)
 	i++;
 	res[i] = '\0';
 	printf("%s\n", res);
-	while (i < len - 1)
-	{
-		stash[j] = stash[i];
-		i++;
-		j++;
-	}
-	printf("%s", stash);
+	printf("%d\n", i);
+	stash = ft_save (stash, len, i);
 	return(res);
 }
 
