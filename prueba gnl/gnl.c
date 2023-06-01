@@ -6,7 +6,7 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:44:23 by becamino          #+#    #+#             */
-/*   Updated: 2023/05/31 17:36:40 by becamino         ###   ########.fr       */
+/*   Updated: 2023/06/01 13:18:19 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 6
 
-char	ft_cut(char *stash, int b_size)
+char	*ft_cut(char *stash, int b_size)
 {
 	char	*line;
 	int		i;
@@ -61,11 +61,10 @@ char	*ft_read(int fd, char *stash)
 				return(line);
 			}
 	}
-	
 	if (x == -1)
 		return (NULL);
 	if (x == 0)
-		return();
+		return(stash);
 	return (line);
 }
 

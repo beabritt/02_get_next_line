@@ -6,7 +6,7 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:46:19 by becamino          #+#    #+#             */
-/*   Updated: 2023/05/31 16:55:33 by becamino         ###   ########.fr       */
+/*   Updated: 2023/06/01 13:28:22 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,25 @@ char	*ft_save(char *stash, int b_size, int i)
 	return(temp);
 }
 
+size_t	ft_strlcpy_gnl(char *dst, const char *src, size_t dstsize)
+{
+	size_t	i;
+
+	if (dstsize > 0)
+	{
+		i = 0;
+		while (i < dstsize && src[i] != '\0')
+		{
+			dst[i] = src[i];
+			i ++;
+		}
+		dst [i] = '\0';
+		return (ft_strlen(src));
+	}
+	else
+		return (ft_strlen(src));
+}
+
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;
@@ -48,7 +67,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-int	*ft_strchr_gnl(const char *s, int c)
+int	ft_strchr_gnl(const char *s, int c)
 {
 	const int	slen = ft_strlen(s);
 	int			x;
@@ -77,7 +96,7 @@ char	*ft_strjoin_gnl(char const *s1, char const *s2)
 	s3 = malloc(x);
 	if (!s3)
 		return (0);
-	ft_strlcpy (s3, s1, slen1 + 1);
-	ft_strlcpy (&s3[slen1], s2, slen2 + 1);
+	ft_strlcpy_gnl (s3, s1, slen1);
+	ft_strlcpy_gnl (&s3[slen1], s2, slen2);
 	return (s3);
 }
