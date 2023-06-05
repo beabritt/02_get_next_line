@@ -6,63 +6,89 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:46:19 by becamino          #+#    #+#             */
-/*   Updated: 2023/05/24 18:48:39 by becamino         ###   ########.fr       */
+/*   Updated: 2023/06/05 16:38:07 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-
-char	*ft_cut(char *stash, int b_size, char *saved)
+void	ft_strlcpy_gnl(char *dst, const char *src, size_t dstsize)
 {
-	char		*line;
-	static char	*temp;
-	int			i;
+	size_t	i;
+
+	if (dstsize > 0)
+	{
+		i = 0;
+		while (i < dstsize && src[i] != '\0')
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst [i] = '\0';
+	}
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
 
 	i = 0;
-	line = malloc(b_size);
-	while(i < b_size - 1 && stash[i] != 10)
-	{
-			line[i] = stash[i];
-			i++;
-	}		
-	line[i] = stash[i];
-	saved = ft_save(stash, b_size, i, temp);
-	free(temp);
-	//printf("\n %d", i);
-	//printf("\n %s", saved);
-	
-	return(line);
+	while (s && s[i] != '\0')
+		i++;
+	return (i);
 }
 
-char	*ft_save(char *stash, int b_size, int i, char *temp)
+int	ft_strchr_gnl(const char *s, char c)
 {
-	int	diff;
-	int	x;
-	
-	b_size = b_size - 1;
-	diff = b_size - i;
-	
+	int	slen = (int)ft_strlen(s);
+	int			x;
+
 	x = 0;
-	temp = malloc(diff);
-	while (diff > 0)
+	while (x <= slen)
 	{
-		temp[x] = stash[b_size];
-		diff--;
-		x++;
-		b_size--;
+		if (s[x] == c)
+			return (1);
+		else
+			x++;
 	}
-	return(temp);
+	return (0);
 }
 
-int	ft_strlen(char *line)
+char	*ft_strjoin_gnl(char const *s1, char const *s2)
 {
-	int	cont;
-
-	cont = 0;
-	while(line[cont] != '\0')
+	char	*s3;
+	int		x;
+	int		j;
+	
+	if (!s1)
+		s3 = malloc(sizeof(char) * (ft_strlen(s2) + 1));
+	else
+		s3 = malloc(sizeof(char) * (ft_strlen(s2) + ft_strlen(s1) + 1));
+	if (!s3)
+		return (0);
+	x = 0;
+	while (s1 && s1[x])
 	{
-		cont++;
+		s3[x] = s1[x];
+		x++;
 	}
-	return(cont);
+	j = 0;
+	while (s2[j])
+	{
+		s3[x + j] = s2[j];
+		j++;
+	}
+	s3[x + j] = '\0';
+	free ((char *)s1);
+	return (s3);
+}
+
+char	*ft_free(char *stash)
+{
+	if (stash)
+	{
+		free (stash);
+		stash = NULL;
+	}
+	return (NULL);
 }

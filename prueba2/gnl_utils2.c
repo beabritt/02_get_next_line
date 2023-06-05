@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gnl_utils.c                                        :+:      :+:    :+:   */
+/*   gnl_utils2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:46:19 by becamino          #+#    #+#             */
-/*   Updated: 2023/06/01 18:56:05 by becamino         ###   ########.fr       */
+/*   Updated: 2023/06/05 14:26:25 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "gnl.h"
+#include "gnl2.h"
 
 void	ft_strlcpy_gnl(char *dst, const char *src, size_t dstsize)
 {

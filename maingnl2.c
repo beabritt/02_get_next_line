@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   maingnl2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 18:31:12 by becamino          #+#    #+#             */
-/*   Updated: 2023/06/05 14:47:08 by becamino         ###   ########.fr       */
+/*   Updated: 2023/06/05 16:42:31 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,22 @@
 
 int main(void)
 {
-    int     fd;
+    int 	fd;
+	int		x;
     char    *line;
-    int     x;
-    
-    fd = open("hola.txt", O_RDONLY);
+
+	x = 0;
+    fd = open("caca.txt", O_RDONLY);
     if (!fd)
         return (0);
-    while(x < 2)
-    {
-        line = get_next_line(fd);
-        x++;
-        printf("%s", line);
-    }
-    free(line);
+	while (x < 9)
+	{
+   		line = get_next_line(fd);
+		printf("%s", line);
+		free(line);
+		x++;
+	}
+
     close(fd);
     return (0);
 }
