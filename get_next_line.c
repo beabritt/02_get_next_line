@@ -12,6 +12,16 @@
 
 #include "get_next_line.h"
 
+char	*ft_free(char *s1)
+{
+	if (s1)
+	{
+		free (s1);
+		s1 = NULL;
+	}
+	return (NULL);
+}
+
 char	*ft_save(char *stash)
 {
 	char	*aux;
@@ -27,7 +37,7 @@ char	*ft_save(char *stash)
 	i++;
 	aux = malloc(sizeof(char)*(len - i + 1));
 	if (!aux)
-		return(NULL);
+		return(ft_free(stash));
 	while (i < len)
 	{
 		aux[x] = stash[i];
@@ -35,7 +45,7 @@ char	*ft_save(char *stash)
 		i++;
 	}
 	if (x == 0)
-		return (NULL);
+		return (ft_free(stash));
 	aux[x] = '\0';
 	free(stash);
 	return (aux);
@@ -75,11 +85,7 @@ char	*get_next_line(int fd)
 	
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 	{
-		if (stash)
-		{
-			free (stash);
-			stash = NULL;
-		}
+		stash = ft_free(stash);
 		return (NULL);
 	}
 	x = 1;
@@ -93,12 +99,12 @@ char	*get_next_line(int fd)
 		readd[x] = '\0';
 		stash = ft_strjoin_gnl(stash, readd);
 		if (!stash)
-			return (NULL);
+			return (ft_free(stash));
 		if (ft_strchr_gnl(stash, '\n') == 1)
 			break ;
 	}
 	if (!stash)
-		return (NULL);
+		return (ft_free(stash));
 	line = ft_cut(stash);
 	stash = ft_save(stash);
 	return(line);	

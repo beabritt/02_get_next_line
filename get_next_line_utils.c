@@ -54,7 +54,7 @@ int	ft_strchr_gnl(const char *s, char c)
 	return (0);
 }
 
-char	*ft_strjoin_gnl(char const *s1, char const *s2)
+char	*ft_strjoin_gnl(char *s1, char *s2)
 {
 	char	*s3;
 	int		x;
@@ -65,30 +65,21 @@ char	*ft_strjoin_gnl(char const *s1, char const *s2)
 	else
 		s3 = malloc(sizeof(char) * (ft_strlen(s2) + ft_strlen(s1) + 1));
 	if (!s3)
-		return (0);
+		return (ft_free(s3));
 	x = 0;
-	while (s1 && s1[x])
+	while (s1 && s1[x] != '\0')
 	{
 		s3[x] = s1[x];
 		x++;
 	}
 	j = 0;
-	while (s2[j])
+	while (s2[j] != '\0')
 	{
 		s3[x + j] = s2[j];
 		j++;
 	}
 	s3[x + j] = '\0';
-	free ((char *)s1);
+	ft_free(s1);
 	return (s3);
 }
 
-char	*ft_free(char *stash)
-{
-	if (stash)
-	{
-		free (stash);
-		stash = NULL;
-	}
-	return (NULL);
-}
