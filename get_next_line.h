@@ -26,14 +26,14 @@
 
 //main_functions
 char	*get_next_line(int fd);
+char	*ft_read(int fd, char *stash);
 char	*ft_cut(char *stash);
 char	*ft_save(char *stash);
 char	*ft_free(char *s1);
 
 //aux_functions
-void	ft_strlcpy_gnl(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlen(const char *s);
-int 	ft_strchr_gnl(const char *s, char c);
+int		ft_strchr_gnl(const char *s, char c);
 char	*ft_strjoin_gnl(char *s1, char *s2);
 
 #endif

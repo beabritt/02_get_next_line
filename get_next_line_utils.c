@@ -12,22 +12,6 @@
 
 #include "get_next_line.h"
 
-void	ft_strlcpy_gnl(char *dst, const char *src, size_t dstsize)
-{
-	size_t	i;
-
-	if (dstsize > 0)
-	{
-		i = 0;
-		while (i < dstsize && src[i] != '\0')
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst [i] = '\0';
-	}
-}
-
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;
@@ -40,9 +24,10 @@ size_t	ft_strlen(const char *s)
 
 int	ft_strchr_gnl(const char *s, char c)
 {
-	int	slen = (int)ft_strlen(s);
+	int			slen;
 	int			x;
 
+	slen = (int)ft_strlen(s);
 	x = 0;
 	while (x <= slen)
 	{
@@ -59,7 +44,7 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	char	*s3;
 	int		x;
 	int		j;
-	
+
 	if (!s1)
 		s3 = malloc(sizeof(char) * (ft_strlen(s2) + 1));
 	else
@@ -82,4 +67,3 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	ft_free(s1);
 	return (s3);
 }
-
