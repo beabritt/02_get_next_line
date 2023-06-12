@@ -6,11 +6,21 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:46:19 by becamino          #+#    #+#             */
-/*   Updated: 2023/06/05 16:38:07 by becamino         ###   ########.fr       */
+/*   Updated: 2023/06/12 16:30:45 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+char	*ft_free(char *s1)
+{
+	if (s1)
+	{
+		free (s1);
+		s1 = NULL;
+	}
+	return (NULL);
+}
 
 size_t	ft_strlen(const char *s)
 {

@@ -6,7 +6,7 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 18:31:12 by becamino          #+#    #+#             */
-/*   Updated: 2023/06/05 16:42:31 by becamino         ###   ########.fr       */
+/*   Updated: 2023/06/12 15:56:00 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(void)
     fd = open("caca.txt", O_RDONLY);
     if (!fd)
         return (0);
-	while (x < 9)
+	while (x <= 1)
 	{
    		line = get_next_line(fd);
 		printf("%s", line);

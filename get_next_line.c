@@ -6,20 +6,30 @@
 /*   By: becamino <becamino@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:44:23 by becamino          #+#    #+#             */
-/*   Updated: 2023/06/05 16:44:01 by becamino         ###   ########.fr       */
+/*   Updated: 2023/06/12 16:31:47 by becamino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_free(char *s1)
+char	*ft_save2(char *stash, size_t i, size_t len)
 {
-	if (s1)
+	char	*aux;
+	int		x;
+
+	aux = malloc(sizeof(char) *(len - i + 1));
+	if (!aux)
+		return (NULL);
+	x = 0;
+	while (i < len)
 	{
-		free (s1);
-		s1 = NULL;
+		aux[x] = stash[i];
+		x++;
+		i++;
 	}
-	return (NULL);
+	aux[x] = '\0';
+	free (stash);
+	return (aux);
 }
 
 char	*ft_save(char *stash)
@@ -34,23 +44,14 @@ char	*ft_save(char *stash)
 	len = ft_strlen(stash);
 	while (stash[i] != '\0' && stash[i] != '\n')
 		i++;
+	if (stash[i] == '\n')
+		i++;
 	if (stash[i] == '\0')
 	{
 		free(stash);
 		return (NULL);
 	}
-	i++;
-	aux = malloc(sizeof(char) *(len - i + 1));
-	if (!aux)
-		return (NULL);
-	while (i < len)
-	{
-		aux[x] = stash[i];
-		x++;
-		i++;
-	}
-	aux[x] = '\0';
-	free(stash);
+	aux = ft_save2(stash, i, len);
 	return (aux);
 }
 
